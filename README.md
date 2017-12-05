@@ -1,4 +1,5 @@
-# Multilib Docker Base Image for Arch Linux 
+# Multilib Docker Base Image for Arch Linux [![Build Status](https://travis-ci.org/f-breidenstein/archlinux-multilib-docker.svg?branch=master)](https://travis-ci.org/f-breidenstein/archlinux-multilib-docker)
+
 This repository contains all scripts and files needed to crate a Docker base image for the Arch Linux distribution.
 
 ## Dependencies
