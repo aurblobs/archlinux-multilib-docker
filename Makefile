@@ -1,13 +1,14 @@
-DOCKER_USER:=pierres
-DOCKER_ORGANIZATION=archlinux
-DOCKER_IMAGE:=base
+DOCKER_USER:=fleaz
+DOCKER_ORGANIZATION=fleaz
+DOCKER_IMAGE:=arch-multilib
 
 rootfs:
 	$(eval TMPDIR := $(shell mktemp -d))
-	cp /usr/share/devtools/pacman-extra.conf rootfs/etc/pacman.conf
+	cp /usr/share/devtools/pacman-multilib.conf rootfs/etc/pacman.conf
 	cat pacman-conf.d-noextract.conf >> rootfs/etc/pacman.conf
 	env -i pacstrap -C rootfs/etc/pacman.conf -c -d -G -M $(TMPDIR) $(shell cat packages)
 	cp --recursive --preserve=timestamps --backup --suffix=.pacnew rootfs/* $(TMPDIR)/
+	cp /usr/share/devtools/pacman-multilib.conf $(TMPDIR)/etc/pacman.conf
 	arch-chroot $(TMPDIR) locale-gen
 	arch-chroot $(TMPDIR) pacman-key --init
 	arch-chroot $(TMPDIR) pacman-key --populate archlinux
