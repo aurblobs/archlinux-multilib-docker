@@ -19,4 +19,3 @@ Run `make docker-image` as root to build the base image.
 
 ## Addons from this fork
 * Enable Multilib in the pacman.conf
-* Install `gcc-multilib`
