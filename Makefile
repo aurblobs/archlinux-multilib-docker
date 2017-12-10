@@ -1,6 +1,6 @@
-DOCKER_USER:=fleaz
-DOCKER_ORGANIZATION=fleaz
-DOCKER_IMAGE:=arch-multilib
+DOCKER_USER ?= fleaz
+DOCKER_ORGANIZATION := aurblobs
+DOCKER_IMAGE := arch-multilib
 
 rootfs:
 	$(eval TMPDIR := $(shell mktemp -d))
