@@ -1,4 +1,4 @@
-DOCKER_USER ?= fleaz
+DOCKER_USER ?= aurblobsci
 DOCKER_ORGANIZATION := aurblobs
 DOCKER_IMAGE := arch-multilib
 
@@ -32,8 +32,8 @@ ci-test:
 		-v $(PWD):/app -w /app $(DOCKER_ORGANIZATION)/$(DOCKER_IMAGE) \
 		sh -c 'pacman -Syu --noconfirm make devtools docker && make docker-image-test'
 
-docker-push:
-	docker login -u $(DOCKER_USER)
+docker-push: docker-image-test
+	docker login -u $(DOCKER_USER) -p $(DOCKER_PASSWORD)
 	docker push $(DOCKER_ORGANIZATION)/$(DOCKER_IMAGE)
 
 .PHONY: rootfs docker-image docker-image-test ci-test docker-push
